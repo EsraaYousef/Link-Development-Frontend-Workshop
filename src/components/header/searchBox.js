@@ -1,12 +1,8 @@
-import { useState, useDispatch } from "react";
-import { connect } from "react-redux";
+import { useState } from "react";
 import { Button } from "reactstrap";
 import { BsSearch } from "react-icons/bs";
 
-import { search } from "../../redux/actions/news";
-
 const SearchBox = (props) => {
-  const articles = props.news;
   const { pages, change, wordValue } = props;
   const [textboxOpen, setTextboxOpen] = useState(false);
   const toggleTextbox = () => setTextboxOpen(!textboxOpen);

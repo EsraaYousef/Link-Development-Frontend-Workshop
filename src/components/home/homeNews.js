@@ -6,7 +6,7 @@ import Loading from "../loader";
 const HomeNews = (props) => {
   const articles = props.news;
   const HomeArticles = articles.filter((item) => item.showOnHomepage === true);
-  console.log("news in HomeArticles ---> ", HomeArticles);
+  // console.log("news in HomeArticles ---> ", HomeArticles);
 
   return (
     <section className="bg-white news_wrapper">

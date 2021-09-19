@@ -15,7 +15,7 @@ const Help = () => {
         (result) => {
           setIsLoaded(true);
           setItems(result.helpList);
-          console.log("result ==> ", result);
+          // console.log("result ==> ", result);
         },
         (error) => {
           setIsLoaded(true);

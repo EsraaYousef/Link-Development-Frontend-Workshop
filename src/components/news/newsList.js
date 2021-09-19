@@ -11,10 +11,13 @@ import { sortByAlphabet } from "../../redux/actions";
 const NewsList = (props) => {
   const articles = props.news;
   const dispatch = useDispatch();
-  // console.log("news in All news ---> ", props.news);
+  // console.log("news in All news ---> ", [
+  //   ...new Set(props.news.map((x) => x.name)),
+  // ]);
   //
   const [allData, setAllData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [activeStep, setActiveStep] = useState(0 || 0);
   const [pages, setPages] = useState([]);
   const [numPages, setNumPages] = useState(0);
@@ -66,7 +69,7 @@ const NewsList = (props) => {
 
   // console.log("single pages", pages);
 
-  const handleFilter = (event) => {
+  const handleSearchByTitle = (event) => {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
     const newFilter = articles.filter((value) => {
@@ -78,12 +81,12 @@ const NewsList = (props) => {
       setPages(newFilter);
     }
   };
-  const setFilterParam = (event) => {
+  const handleSelectByCategory = (event) => {
     const optionValue = event.target.value;
-    console.log("optionValue", optionValue);
-    setWordEntered(optionValue);
+    setSelectedCategory(optionValue);
     const newFilter = articles.filter((value) => {
-      return value.title.toLowerCase().includes(optionValue.toLowerCase());
+      // return value.title.toLowerCase().includes(optionValue.toLowerCase());
+      return value.name === optionValue;
     });
     if (optionValue === "") {
       setAllData([allData]);
@@ -95,6 +98,7 @@ const NewsList = (props) => {
   const viewValue = (event) => {
     console.log(event.target.value);
   };
+
   // let filteredDates = articles.filter(
   //   (article) =>
   //     new Date(article.publishedAt) > new Date("2020-09-14T07:38:00Z") &&
@@ -134,17 +138,19 @@ const NewsList = (props) => {
               <label className="control-label">Category</label>
               <select
                 className="form-control"
-                onChange={(e) => {
-                  setFilterParam(e.target.value);
+                onChange={(event) => {
+                  handleSelectByCategory(event);
                 }}
               >
                 <option value="All">select</option>
                 {pages.length &&
-                  pages.map((news) => (
-                    <option value={news.name} key={news.id}>
-                      {news.name}
-                    </option>
-                  ))}
+                  [...new Set(props.news.map((x) => x.name))].map(
+                    (news, index) => (
+                      <option value={news} key={index}>
+                        {news}
+                      </option>
+                    )
+                  )}
               </select>
             </div>
           </div>
@@ -152,7 +158,7 @@ const NewsList = (props) => {
             <div className="main-search form-group">
               <SearchBox
                 {...props}
-                change={handleFilter}
+                change={handleSearchByTitle}
                 pages={pages}
                 wordValue={wordEntered}
               />
