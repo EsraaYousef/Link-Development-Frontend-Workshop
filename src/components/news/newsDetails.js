@@ -29,9 +29,8 @@ const NewsDetails = (props) => {
     setSharingListOpen(!isSharingListOpen);
   };
   useEffect(() => {
-    // console.log("****news****", news);
     let selected = props.news.find((article) => article.id == id);
-    console.log("**************selectedArticle*************", selected);
+    // console.log("selectedArticl ==> ", selected);
     setSelectedArticle(selected);
   }, [news]);
 
