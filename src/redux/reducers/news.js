@@ -3,6 +3,8 @@ import {
   FETCH_CATEGORIES,
   FETCH_NEWS_DETAILS,
   SORT_BY_ALPHABET,
+  ADD_TO_WISHLIST,
+  REMOVE_FROM_WISHLIST,
 } from "../actions/news";
 
 const initialState = {
@@ -34,3 +36,15 @@ export const fetchCategories = (state = initialState, action) => {
       return state;
   }
 };
+
+// export const wishlistReducer = (state = initialState, action) => {
+//   switch (action.type) {
+//     case ADD_TO_WISHLIST:
+//       return { wishlist: action.payload };
+//     case REMOVE_FROM_WISHLIST:
+//       return { wishlist: action.payload };
+
+//     default:
+//       return state;
+//   }
+// };

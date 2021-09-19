@@ -3,6 +3,8 @@ import {
   FETCH_CATEGORIES,
   FETCH_NEWS_DETAILS,
   SORT_BY_ALPHABET,
+  // ADD_TO_WISHLIST,
+  // REMOVE_FROM_WISHLIST,
 } from "./news";
 
 const news_listing = "https://api.npoint.io/e2534d5412765bf36702";
@@ -53,3 +55,36 @@ export const sortByAlphabet = (news) => ({
     return 0;
   }, console.log("Articles after sorting ==> ", news)),
 });
+
+// export const addToWishlist = (article) => (dispatch) => {
+//   const wishlist = localStorage.getItem("wishList")
+//     ? JSON.parse(localStorage.getItem("wishList"))
+//     : [];
+//   // if (wishlist.length) {
+//   //   const itemInWishIndex = wishlist.findIndex(
+//   //     (wishItem) => wishItem.id === article.id
+//   //   );
+
+//   //   wishlist.push({ ...article });
+//   //   console.log("...article", article);
+//   // }
+//   if (wishlist.length) {
+//     const itemInWishlistIndex = wishlist.findIndex(
+//       (item) => item.id === article.id
+//     );
+//     wishlist.remove({ ...article });
+//     if (itemInWishlistIndex !== -1) {
+//       wishlist[itemInWishlistIndex].remove();
+//     } else {
+//       wishlist.push({ ...article });
+//     }
+//   } else {
+//     wishlist.push({ ...article });
+//   }
+
+//   localStorage.setItem("wishlist", JSON.stringify(wishlist));
+//   return dispatch({
+//     type: ADD_TO_WISHLIST,
+//     payload: JSON.parse(localStorage.getItem("wishlist")),
+//   });
+// };

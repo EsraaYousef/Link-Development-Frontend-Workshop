@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+// import { addToWishlist } from "../../redux/actions";
 import {
   IoHeartOutline,
   IoShareSocial,
@@ -13,7 +14,7 @@ import {
 const News = (props) => {
   const { news: article } = props;
   // console.log("article", article);
-
+  const dispatch = useDispatch();
   const [isLiked, setIsLiked] = useState(false);
   const [isLikedClass, setIsLikedClass] = useState(false);
   const [isSharingList, setisSharingList] = useState(false);
@@ -34,6 +35,23 @@ const News = (props) => {
     }`;
     return formattedDate;
   };
+  const addToWishlist = (article) => {
+    const wishlist = localStorage.getItem("wishList")
+      ? JSON.parse(localStorage.getItem("wishList"))
+      : [];
+    if (wishlist.length) {
+      const itemInWishlistIndex = wishlist.findIndex(
+        (item) => item.id === article.id
+      );
+      if (itemInWishlistIndex !== -1) {
+        wishlist.remove({ ...article });
+      }
+    } else {
+      wishlist.push({ ...article });
+    }
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    // alert("Added Successfully to LocalStorage");
+  };
 
   return (
     <div className="card news_item_wrap">
@@ -47,8 +65,13 @@ const News = (props) => {
       <div className="card-body news_info">
         <div className="buttons-action">
           <span
-            onClick={toggleLiked}
             className={isLikedClass ? "btn-fav liked" : "btn-fav"}
+            title="Add to wishlist"
+            onClick={() => {
+              toggleLiked();
+              addToWishlist(article);
+              // dispatch(addToWishlist(article));
+            }}
           >
             <IoHeartOutline />
           </span>
