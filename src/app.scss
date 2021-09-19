@@ -1,0 +1,16 @@
+@import "~bootstrap/scss/bootstrap";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600&display=swap');
+
+@import "./src/styles/settings";
+@import "./src/styles/generic";
+@import "./src/styles/base";
+@import "./src/styles/objects";
+@import "./src/styles/components";
+@import "./src/styles/mediaQuery";
+
+#root{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}

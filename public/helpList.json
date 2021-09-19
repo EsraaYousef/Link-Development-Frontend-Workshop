@@ -1,0 +1,39 @@
+{
+  "helpList": [
+    {
+      "id": 1,
+      "title": "Find place",
+      "icon": "images/help/pin.png"
+    },
+    {
+      "id": 2,
+      "title": "A’awen",
+      "icon": "images/help/eye.png"
+    },
+    {
+      "id": 3,
+      "title": "Omniyat",
+      "icon": "images/help/info.png"
+    },
+    {
+      "id": 4,
+      "title": "Give Time",
+      "icon": "images/help/time.png"
+    },
+    {
+      "id": 5,
+      "title": "Tofoula",
+      "icon": "images/help/tofula.png"
+    },
+    {
+      "id": 6,
+      "title": "Fundraising",
+      "icon": "images/help/fundraising.png"
+    },
+    {
+      "id": 7,
+      "title": "Zakat",
+      "icon": "images/help/zakat.png"
+    }
+  ]
+}

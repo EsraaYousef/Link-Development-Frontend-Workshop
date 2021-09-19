@@ -1,0 +1,42 @@
+/*
+    typed..Esraa Yousef
+*/
+
+$white-color: #ffffff;
+$black-color: #111111;
+$main-color: #0f3294;
+$second-color: #13beff;
+$dark-color: #181c25;
+$font-color: #565960;
+$light-grey: #fbfbfb;
+$control-color: #efefef;
+$radius: 5px;
+$bar-width: 25px;
+$bar-height: 3px;
+$bar-spacing: 8px;
+$canceled-status: #afafaf;
+
+$twitter: #1da1f2;
+$facebook: #1877f2;
+$linkedin: #0077b5;
+$youtube: #ff0000;
+$instagram: #f56040;
+$email: #ff6666;
+
+%shadow {
+  -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  -o-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+%ease {
+  -webkit-transition: all 0.5s linear 0s;
+  -moz-transition: all 0.5s linear 0s;
+  -o-transition: all 0.5s linear 0s;
+  transition: all 0.5s linear 0s;
+}
+
+:root {
+  --swiper-theme-color: $light-grey;
+}
