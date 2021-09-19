@@ -3,7 +3,7 @@ import { Button } from "reactstrap";
 import { BsSearch } from "react-icons/bs";
 
 const SearchBox = (props) => {
-  const { pages, change, wordValue } = props;
+  const { change, wordValue } = props;
   const [textboxOpen, setTextboxOpen] = useState(false);
   const toggleTextbox = () => setTextboxOpen(!textboxOpen);
 

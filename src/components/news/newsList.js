@@ -11,13 +11,11 @@ import { sortByAlphabet } from "../../redux/actions";
 const NewsList = (props) => {
   const articles = props.news;
   const dispatch = useDispatch();
-  // console.log("news in All news ---> ", [
-  //   ...new Set(props.news.map((x) => x.name)),
-  // ]);
-  //
   const [allData, setAllData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
+  // const [startDate, setStartDate] = useState("");
+  // const [endDate, setEndDate] = useState("");
   const [activeStep, setActiveStep] = useState(0 || 0);
   const [pages, setPages] = useState([]);
   const [numPages, setNumPages] = useState(0);
@@ -95,17 +93,19 @@ const NewsList = (props) => {
     }
   };
 
-  const viewValue = (event) => {
-    console.log(event.target.value);
+  const handleFilterByDate = (event) => {
+    let filteredDates = articles.filter(
+      (article) =>
+        new Date(article.publishedAt) > new Date("2020-09-13T07:38:00Z") &&
+        new Date(article.publishedAt) < new Date("2020-09-13T23:00:00Z")
+    );
+    if (event.target.value === "") {
+      setAllData([allData]);
+    } else {
+      setPages(filteredDates);
+    }
+    console.log("ffilteredDates ==> ", filteredDates);
   };
-
-  // let filteredDates = articles.filter(
-  //   (article) =>
-  //     new Date(article.publishedAt) > new Date("2020-09-14T07:38:00Z") &&
-  //     new Date(article.publishedAt) < new Date("2020-09-17T00:00:00Z")
-  // );
-
-  // console.log("ffilteredDates ==> ", filteredDates);
 
   return (
     <section className="bg-grey news_wrapper">
@@ -117,7 +117,7 @@ const NewsList = (props) => {
               <input
                 className="form-control"
                 type="datetime-local"
-                onChange={viewValue}
+                onChange={handleFilterByDate}
                 id="startDate"
               />
             </div>
@@ -128,7 +128,7 @@ const NewsList = (props) => {
               <input
                 className="form-control"
                 type="datetime-local"
-                onChange={viewValue}
+                onChange={handleFilterByDate}
                 id="endDate"
               />
             </div>
@@ -141,6 +141,7 @@ const NewsList = (props) => {
                 onChange={(event) => {
                   handleSelectByCategory(event);
                 }}
+                value={selectedCategory}
               >
                 <option value="All">select</option>
                 {pages.length &&
